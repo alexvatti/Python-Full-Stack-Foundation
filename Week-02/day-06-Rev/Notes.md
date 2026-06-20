@@ -754,6 +754,32 @@ Output
 
 ------------------------------------------------------------------------
 
+| Topic                                      | Key Concept                                                                      |
+| ------------------------------------------ | -------------------------------------------------------------------------------- |
+| String                                     | Sequence of characters enclosed in quotes                                        |
+| type()                                     | Returns `<class 'str'>`                                                          |
+| Triple Quotes                              | Multi-line strings                                                               |
+| Positive Index                             | Left → Right (0,1,2...)                                                          |
+| Negative Index                             | Right → Left (-1,-2...)                                                          |
+| Slicing                                    | `string[start:stop:step]`                                                        |
+| +                                          | Concatenate strings                                                              |
+| *                                          | Repeat strings                                                                   |
+| len()                                      | Length of string                                                                 |
+| in / not in                                | Membership testing                                                               |
+| Comparison                                 | Lexicographical (alphabetical/Unicode) order                                     |
+| strip(), lstrip(), rstrip()                | Remove whitespace                                                                |
+| find(), index()                            | Locate substring (`find()` returns `-1`; `index()` raises an error if not found) |
+| count()                                    | Count occurrences                                                                |
+| replace()                                  | Replace substring                                                                |
+| split()                                    | Convert string to list                                                           |
+| join()                                     | Join list into string                                                            |
+| lower(), upper(), swapcase()               | Change case                                                                      |
+| title(), capitalize()                      | Format text case                                                                 |
+| startswith(), endswith()                   | Check prefix/suffix                                                              |
+| isalnum(), isalpha(), isdigit()            | Character validation                                                             |
+| islower(), isupper(), istitle(), isspace() | Case and whitespace checks                                                       |
+
+
 # Self-Study Exercises
 
 1.  Reverse a string using slicing.
