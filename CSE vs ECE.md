@@ -1,4 +1,3 @@
-````markdown
 # CSE vs ECE – A Practical Understanding
 
 Many students think **CSE and ECE are almost the same because both involve programming.**
@@ -536,4 +535,3 @@ Examples
 # One-Line Summary
 
 > **CSE is about building software that people use every day, whereas ECE is about building the electronic systems and embedded software that make intelligent devices work.**
-````
