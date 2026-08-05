@@ -23,6 +23,63 @@ def db_close(conn):
 
 
 # ======================================
+# Create Tables
+# ======================================
+
+def create_tables(conn, cursor):
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Student(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        age INTEGER,
+        branch TEXT,
+        marks REAL
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Employee(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        department TEXT,
+        salary REAL
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Product(
+        id INTEGER PRIMARY KEY,
+        product_name TEXT NOT NULL,
+        price REAL,
+        quantity INTEGER
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Book(
+        id INTEGER PRIMARY KEY,
+        title TEXT NOT NULL,
+        author TEXT,
+        price REAL
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Patient(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        age INTEGER,
+        disease TEXT
+    )
+    """)
+
+    conn.commit()
+
+    print("\nAll Tables Created Successfully.\n")
+
+
+# ======================================
 # Select Table
 # ======================================
 
@@ -46,13 +103,12 @@ def select_table():
     }
 
     return tables.get(choice)
-```
 
----
 
+# ======================================
 # Insert Sample Data
+# ======================================
 
-```python
 def insert_sample_data(conn, cursor):
 
     table = select_table()
@@ -130,13 +186,12 @@ def insert_sample_data(conn, cursor):
     conn.commit()
 
     print("Sample Data Inserted Successfully.")
-```
 
----
 
+# ======================================
 # Insert Record
+# ======================================
 
-```python
 def insert_record(conn, cursor):
 
     table = select_table()
@@ -205,13 +260,12 @@ def insert_record(conn, cursor):
     conn.commit()
 
     print("Record Inserted Successfully.")
-```
 
----
 
+# ======================================
 # Select Records
+# ======================================
 
-```python
 def select_records(cursor):
 
     table = select_table()
@@ -224,13 +278,12 @@ def select_records(cursor):
 
     for row in rows:
         print(row)
-```
 
----
 
+# ======================================
 # Update Record
+# ======================================
 
-```python
 def update_record(conn, cursor):
 
     table = select_table()
@@ -288,13 +341,12 @@ def update_record(conn, cursor):
     conn.commit()
 
     print("Record Updated Successfully.")
-```
 
----
 
+# ======================================
 # Delete Record
+# ======================================
 
-```python
 def delete_record(conn, cursor):
 
     table = select_table()
@@ -309,20 +361,19 @@ def delete_record(conn, cursor):
     conn.commit()
 
     print("Record Deleted Successfully.")
-```
 
----
 
+# ======================================
 # Show Tables
+# ======================================
 
-```python
 def show_tables(cursor):
 
     cursor.execute("""
-        SELECT name
-        FROM sqlite_master
-        WHERE type='table'
-        ORDER BY name
+    SELECT name
+    FROM sqlite_master
+    WHERE type='table'
+    ORDER BY name
     """)
 
     tables = cursor.fetchall()
@@ -331,13 +382,12 @@ def show_tables(cursor):
 
     for table in tables:
         print(table[0])
-```
 
----
 
+# ======================================
 # Menu
+# ======================================
 
-```python
 def menu():
 
     conn, cursor = db_connect()
@@ -345,36 +395,40 @@ def menu():
     while True:
 
         print("\n========== MENU ==========")
-        print("1. Insert Sample Data")
-        print("2. Insert Record")
-        print("3. Select Records")
-        print("4. Update Record")
-        print("5. Delete Record")
-        print("6. Show Tables")
-        print("7. Exit")
+        print("1. Create Tables")
+        print("2. Insert Sample Data")
+        print("3. Insert Record")
+        print("4. Select Records")
+        print("5. Update Record")
+        print("6. Delete Record")
+        print("7. Show Tables")
+        print("8. Exit")
         print("==========================")
 
         choice = input("Enter Choice : ")
 
         if choice == "1":
-            insert_sample_data(conn, cursor)
+            create_tables(conn, cursor)
 
         elif choice == "2":
-            insert_record(conn, cursor)
+            insert_sample_data(conn, cursor)
 
         elif choice == "3":
-            select_records(cursor)
+            insert_record(conn, cursor)
 
         elif choice == "4":
-            update_record(conn, cursor)
+            select_records(cursor)
 
         elif choice == "5":
-            delete_record(conn, cursor)
+            update_record(conn, cursor)
 
         elif choice == "6":
-            show_tables(cursor)
+            delete_record(conn, cursor)
 
         elif choice == "7":
+            show_tables(cursor)
+
+        elif choice == "8":
             db_close(conn)
             print("Thank You...")
             break
@@ -382,6 +436,10 @@ def menu():
         else:
             print("Invalid Choice")
 
+
+# ======================================
+# Main Program
+# ======================================
 
 menu()
 ```
